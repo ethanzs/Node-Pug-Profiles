@@ -1,0 +1,128 @@
+body {
+    background: #2e2d36 !important;
+    font-family: Arial;
+}
+
+h1 {
+    color: #fff !important;
+}
+
+h2,
+h3 {
+    color: #e3e3e3 !important;
+}
+
+p {
+    color: #e3e3e3 !important;
+}
+
+h1.center {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%)
+}
+
+h1.header {
+    color: #fff !important;
+    margin-bottom: 13px;
+}
+
+#navbar {
+    height: 70px;
+    width: 100%;
+    background: #0f0e0f;
+    margin-bottom: 30px;
+    position: relative;
+    top: 0;
+}
+
+input.form-control,
+textarea.form-control {
+    background: #201f25 !important;
+    border: none !important;
+    color: #e3e3e3 !important;
+    resize: none;
+}
+
+textarea.form-control {
+    height: 100px !important;
+}
+
+input.form-control {
+    background: #201f25 !important;
+    border: none !important;
+}
+
+input[type="submit"] {
+    background: #8680ac !important;
+    color: #fff !important;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    box-shadow: 0 0 8px #2e2d36 !important;
+    outline: 0 !important;
+}
+
+label {
+    color: #aca1b9 !important;
+}
+
+.navbar-logo {
+    height: 100%;
+    width: 70px;
+    background: url('https://pasteldevelopment.com/imgs/logo.png') no-repeat;
+    background-size: 60%;
+    background-position: center;
+    float: left;
+    margin-left: 10px;
+}
+
+a.navbar-link {
+    float: right;
+    line-height: 70px;
+    margin-right: 25px;
+    color: #fff;
+    font-size: 1em;
+}
+
+a.navbar-link:hover {
+    color: #fff;
+    opacity: .8;
+    text-decoration: none !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #201f25;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #8680ac;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #a099d3;
+}

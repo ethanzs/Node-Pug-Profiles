@@ -1,0 +1,11 @@
+include includes/header.pug
+div.container
+    div(class="col-sm-12 col-md-12 col-lg-6" style="position: relative; margin: 200px auto;")
+        h1.header Login
+        form(method="POST" action="/api/login")
+            div.form-group
+                input(type="text" name="username" placeholder="Username" class="form-control")
+            div.form-group    
+                input(type="password" name="password" placeholder="Password" class="form-control")
+            div.form-group    
+                input(type="submit" value="Login" class="form-control")

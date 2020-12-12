@@ -1,0 +1,14 @@
+include includes/header.pug
+div.container
+    div.row
+        div(class="col-sm-12 col-md-12 col-lg-6" style="position: relative; margin: 170px auto;")
+            h1.header Register
+            form(method="POST" action="/api/register")
+                div.form-group
+                    input(type="text" name="name" placeholder="Name" class="form-control")
+                div.form-group
+                    input(type="text" name="username" placeholder="Username" class="form-control")
+                div.form-group
+                    input(type="password" name="password" placeholder="Password" class="form-control")
+                div.form-group
+                    input(type="submit" value="Register" class="form-control")

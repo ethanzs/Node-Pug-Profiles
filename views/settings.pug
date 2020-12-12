@@ -1,0 +1,82 @@
+include includes/header.pug
+if user
+    div.container
+        div.row
+            div(class="col-sm-12 col-md-12 col-lg-10" style="background: #34333d; padding: 20px; position: relative; margin: 0 auto;")
+                h1 Settings
+                form(id="form" action="/api/update" method="POST")
+                    div.form-group
+                        label(for="name") Name
+                        input(id="name" class="form-control" type='text' name="name" value=`${user.name}`)
+                    div.form-group
+                        label(for="desc") Description
+                        textarea(id="desc" class="form-control" name="description") #{user.description}
+                    div.form-group
+                        label(for="image") Upload new image
+                        input(type="file" class="form-control-file" id="image" name="image")
+                    div.form-group    
+                        input(type="submit" value="Update Profile" class="form-control")
+
+script(src="https://sdk.amazonaws.com/js/aws-sdk-2.799.0.js")
+script.
+    var form = document.getElementById("form");
+    // Prevent form from submitting at first in order to upload the image to your S3 bucket first
+    function handleForm(e) { 
+        e.preventDefault(); 
+        console.log(`FILES = ${document.getElementById("image").files[0]}`)
+        // if the file input is not empty
+        if(document.getElementById("image").files[0] != undefined)
+        {
+            addPhoto();
+        }
+        else
+        {
+            form.submit();
+        }
+    } 
+
+    // event listener for form submit
+    form.addEventListener('submit', handleForm);
+
+    // S3 config (replace with environment variables that public does not have access to)
+    var albumBucketName = "REPLACE WITH ENV VARIABLE";
+    var bucketRegion = "REPLACE WITH ENV VARIABLE";
+    var IdentityPoolId = "REPLACE WITH ENV VARIABLE";
+
+    // update config with new credentials
+    AWS.config.update({
+    region: bucketRegion,
+    credentials: new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: IdentityPoolId
+    })
+    });
+
+    // adds photo to S3
+    function addPhoto() {
+        console.log("Uploading...")
+        var files = document.getElementById("image").files;
+        var file = files[0];
+        var fileName = file.name;
+
+        // S3 ManagedUpload class as it supports multipart uploads
+        var upload = new AWS.S3.ManagedUpload({
+            params: {
+            Bucket: albumBucketName,
+            Key: fileName,
+            Body: file,
+            ACL: "public-read"
+            }
+        });
+
+        var promise = upload.promise();
+
+        promise.then(
+            function(data) {
+                alert("Successfully uploaded photo.");
+                form.submit()
+            },
+            function(err) {
+                return alert("There was an error uploading your photo: ", err.message);
+            }
+        );
+    }

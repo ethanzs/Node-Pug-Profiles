@@ -1,0 +1,9 @@
+include includes/header.pug
+
+div.container
+    div.row
+        div(class="col-sm-12 col-md-6 col-lg-6" style="background: #201f25; padding: 15px 35px; !important")
+            h1 #{profileUser.name}
+            p(style="color: #878496 !important") #{profileUser.description}
+        div(class="col-sm-12 col-md-6 col-lg-6")
+            img(src=`${profileUser.image}` style="width: 100%; height: auto;")
